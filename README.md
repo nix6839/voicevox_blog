@@ -1,11 +1,11 @@
 # VOICEVOX BLOG
 
-VOICEVOX の公式サイトのリポジトリです。  
+VOICEVOX の公式サイトのリポジトリです。<br>
 https://voicevox.hiroshiba.jp/
 
 ## 環境構築
 
-Node v18.13.0、npm v8.19.3 を用いて開発されています。
+Node v20.14.0、pnpm v9.2.0 を用いて開発されています。
 
 ```bash
 npm ci
@@ -14,24 +14,13 @@ npm ci
 ## ローカル環境でチェック
 
 ```bash
-npm run develop
+pnpm dev
 ```
 
 もしくは
 
 ```bash
-npm run build && npm run serve
-```
-
-### 実験モード
-
-コードは実装したいけど、デザインや調整などの課題があってまだサイトに反映できていない実験的なコードがいくつかあります。
-実験的なコードを反映した見た目を確認する際は、`.env.development`ファイルで`GATSBY_VOICEVOX_EXPERIMENTS=true`を指定してください。
-
-## deploy
-
-```bash
-npm run deploy
+pnpm build && pnpm preview
 ```
 
 ### プレビュー版
@@ -41,33 +30,9 @@ npm run deploy
 Netlify を使ってプレビュー環境デプロイを行っています。
 `preview`ブランチに push すると、Netlify のプレビュー環境にデプロイされます。
 
-```bash
-# ビルド
-npm run preview-build
-```
-
 ## add resource
 
-```bash
-editor_tag="0.19.2"
-editor_url="https://raw.githubusercontent.com/VOICEVOX/voicevox/$editor_tag"
-
-resource_tag="0.19.1"
-resource_url="https://raw.githubusercontent.com/VOICEVOX/voicevox_resource/$resource_tag"
-
-# 規約
-curl -s "$resource_url/editor/README.md" > src/markdowns/softwareReadme.md
-
-# 使い方
-curl -s "$editor_url/public/howtouse.md" > src/markdowns/howToUse.md
-sed -r 's|src="([^"]+?)"|src="'$editor_url'/public/\1"|g' -i src/markdowns/howToUse.md
-
-# Q&A
-curl -s "$editor_url/public/qAndA.md" > src/markdowns/qAndA.md
-
-# 変更履歴
-curl -s "$editor_url/public/updateInfos.json" > src/data/updateInfos.json
-```
+TODO
 
 ## 音量に関して
 
@@ -92,15 +57,7 @@ ffmpeg -i $audio_file -af volume=-3dB $output_file
 一部のサムネイルは HTML をレンダリングしたものを画像化しています。
 次のコマンドで更新してください。
 
-```bash
-# 起動
-npm run develop
-
-# しばらくしてから実行
-cd generateThumb
-npm ci
-npm run generateThumb
-```
+TODO
 
 ## タイポチェック
 
@@ -113,7 +70,7 @@ typos
 
 ## LICENSE
 
-VOICEVOX の開発のための利用のみ許可されます。  
+VOICEVOX の開発のための利用のみ許可されます。
 異なるライセンスを取得したい場合は、ヒホ（twitter: @hiho_karuta）に求めてください。
 
 ## 謝辞
